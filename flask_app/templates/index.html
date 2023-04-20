@@ -4,9 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Login and Register</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="register">
+            <form action="/register_user" method="post" class="register_form">
+                <h1>Register</h1>
+                <label for="first_name">First Name:</label>
+                <input type="text" name="first_name" class="login_register">
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name" class="login_register">
+                <label for="email">Email:</label>
+                <input type="text" name="email" class="login_register">
+                <label for="password">Password:</label>
+                <input type="password" name="password" class="login_register">
+                <label for="confirm_pw">Confirm Password:</label>
+                <input type="password" name="confirm_pw" class="login_register">
+                <input type="submit" value="Register">
+            </form>
+            {% with messages = get_flashed_messages(category_filter=['register']) %}
+            {% if messages %}
+                    {% for message in messages %}
+                    <p>{{message}}</p>
+                    {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+        </div>
+        <div class="login">
+            <form action="/login" method="post" class="login_form">
+                <h1>Login</h1>
+                <label for="email">Email:</label>
+                <input type="text" name="email" class="login_register">
+                <label for="password">Password:</label>
+                <input type="password" name="password" class="login_register">
+                <input type="submit" value="Login">
+            </form>
+            {% with messages = get_flashed_messages(category_filter=['login']) %}
+            {% if messages %}
+                    {% for message in messages %}
+                    <p>{{message}}</p>
+                    {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+        </div>
+    </div>
 </body>
 </html>
