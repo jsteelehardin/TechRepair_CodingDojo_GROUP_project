@@ -42,7 +42,7 @@ def show_details(id):
     data = {
         'id' : id
     }
-    return render_template('details.html',repair=repair.Repair.get_one_wit_users(data))
+    return render_template('details.html',repair=repair.Repair.get_one_with_users(data))
 
 @app.route('/edit_details/<int:id>')
 def display_edit_page(id):

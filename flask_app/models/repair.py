@@ -112,4 +112,3 @@ class Repair:
     def worker_cancel(cls,data):
         query = 'Update repairs SET user_id_driver = user_id_rider WHERE repairs.id = %(repair_id)s;'
         return connectToMySQL('group_project').query_db(query,data)
-
