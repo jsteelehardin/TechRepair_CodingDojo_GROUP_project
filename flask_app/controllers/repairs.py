@@ -8,7 +8,7 @@ def request_repair():
 
 @app.route('/repair_submission', methods=['POST'])
 def request_submit(): 
-    if not repair.Repair_request.validate(request.form):
+    if not repair.Repair.validate(request.form):
         return redirect('/new_repair')
     data = {
         'name' : request.form['name'],
