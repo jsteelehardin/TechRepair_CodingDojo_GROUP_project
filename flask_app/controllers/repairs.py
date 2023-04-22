@@ -26,6 +26,7 @@ def destroy(id):
         'id' : id
     }
     repair.Repair.delete(data)
+    flash("Success! Your reapir has been deleted.", "success")
     return redirect('/repair_dashboard')
 
 @app.route('/become_worker', methods =['POST'])
@@ -59,6 +60,7 @@ def update_the_details():
         'destination' : request.form['destination']
     }
     repair.Repair.update(data)
+    flash("Success! Your repair has been changed.", "success")
     return redirect(f'/detail_page/{data["repair_id"]}')
 
 @app.route('/cancel_repair/<int:id>')
