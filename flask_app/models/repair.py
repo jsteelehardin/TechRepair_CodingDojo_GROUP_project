@@ -3,7 +3,7 @@ from flask import flash
 from flask_app.models import user
 
 
-class Ride_request:
+class Repair:
     def __init__(self,data):
         self.id = data['id']
         self.name = data['name']
