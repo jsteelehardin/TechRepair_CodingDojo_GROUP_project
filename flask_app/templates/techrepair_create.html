@@ -13,10 +13,12 @@
 <body  style="background-color: slategrey;">
 
     <div class="container row justify-content-center mx-auto mt-2 p-3">
-        <div class="row">
-            <h1 class="p-0 col-6">New Job</h1>
-            <a href="/dashboard" class="btn btn-info offset-2 col-2" style="height: 70%;">Home</a>
-            <a href="/user/logout" class="btn btn-info offset-1 col-1" style="height: 70%;">Logout</a>
+        <div class="banner">
+            <h1 class="fw-bold logo text-white p-5" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 3.5rem;" >Tech Repairs</h1>
+            <div class="p-5">
+                <a href="#" class="btn btn-light ">Home</a>
+                <a href="#" class="btn btn-light ">Logout</a>
+            </div>
         </div>
         <div>
             {% with messages = get_flashed_messages() %}
@@ -27,7 +29,7 @@
                 {% endif %}
             {% endwith %}
         </div>
-        <form action="/jobs/create/process" method="post" class="card col-12 mx-auto p-3" style="background-color: lightgray;">
+        <form action="#" method="post" class="card col-12 mx-auto p-3" style="background-color: lightgray;">
             <div class="row">
                 <div class="col-4 offset-1">
                     <div class="form-group mb-3">
