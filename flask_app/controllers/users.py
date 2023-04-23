@@ -1,4 +1,4 @@
-from flask import render_template,redirect,session,request, flash
+from flask import render_template,redirect,session,request,url_for, flash
 from flask_app import app
 from flask_app.models import user
 from flask_app.models import repair
@@ -31,10 +31,10 @@ def new_user():
 def login():
     current_user = user.User.get_with_email(request.form)
     if not current_user:
-        flash("Invalid Email","login")
+        flash("Invalid Email.", "danger")
         return redirect('/')
     if not bcrypt.check_password_hash(current_user.password, request.form['password']):
-        flash("Invalid Password","login")
+        flash("Invalid Password.", "danger")
         return redirect('/')
     session['user_id'] = current_user.id
     return redirect('/user_dashboard')
