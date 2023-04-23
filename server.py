@@ -4,4 +4,5 @@ from flask_app.controllers import users
 from flask_app.controllers import repairs
 
 if __name__=="__main__":
-    app.run(debug=True)
+
+    app.run(host='localhost', port=5005, debug=True)
