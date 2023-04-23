@@ -13,8 +13,9 @@
     <div class="banner">
         <h1 class="fw-bold logo text-white p-5" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 3.5rem;" >Tech Repairs</h1>
         <div class="p-5">
-            <a href="#" class="btn btn-light ">Home</a>
-            <a href="#" class="btn btn-light ">Logout</a>
+            <a href="/user_dashboard" class="btn btn-light ">Home</a>
+            <a href="/myjobs" class="btn btn-light btn-add-job">My Jobs</a>
+            <a href="/logout" class="btn btn-light btn-logout">Logout</a>
         </div>
     </div>
         <div class="container row justify-content-center mx-auto mt-2">
@@ -31,16 +32,19 @@
                     {% endif %}
                 {% endwith %}-->
             </div>
-            <form action="#" method="post" class="card col-12 mx-auto   text-dark p-3 "style="background-color: #f8f9fa;">
+            <form action="/submit_update" method="post" class="card col-12 mx-auto   text-dark p-3 "style="background-color: #f8f9fa;">
                 <div class="row">
                 <div class="col-md-6">
                     <div class="form-group mb-3">
+                        <input type="hidden" name="id" value="{{ one_repair.id }}">
                     <label for="job_title" class="form-label">Job Title:</label>
-                    <input type="text" name="job_title" id="job_title" class="form-control">
+                    <input type="text" name="job_title" value="{{ one_repair.name }}" >
+                    <!-- <input type="text" name="job_title" id="job_title" class="form-control"> -->
                     </div>
                     <div class="form-group mb-3">
                     <label for="description" class="form-label">Description:</label>
-                    <textarea name="description" id="description" class="form-control" rows="4"></textarea>
+                    <textarea name="description" cols="30" rows="10">{{one_repair.description}} </textarea>
+                    <!-- <textarea name="description" id="description" class="form-control" rows="4"></textarea> -->
                     </div>
                 </div>
                 <div class="col-md-6">
