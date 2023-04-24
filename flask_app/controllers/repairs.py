@@ -13,7 +13,7 @@ def request_submit():
     data = {
         'name' : request.form['name'],
         'location' : request.form['location'],
-        'destination' : request.form['destination'],
+        'description' : request.form['description'],
         'user_id_posted' : request.form['user_id_posted'],
         'user_id_worker' : request.form['user_id_worker']
     }
@@ -57,7 +57,7 @@ def update_the_details():
     data = {
         'repair_id' : request.form['repair_id'],
         'location' : request.form['location'],
-        'destination' : request.form['destination']
+        'description' : request.form['description']
     }
     repair.Repair.update(data)
     flash("Success! Your repair has been changed.", "success")
