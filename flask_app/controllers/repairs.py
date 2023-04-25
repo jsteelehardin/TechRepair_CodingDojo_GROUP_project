@@ -15,9 +15,10 @@ def request_submit():
         'location' : request.form['location'],
         'description' : request.form['description'],
         'user_id_posted' : request.form['user_id_posted'],
-        'user_id_worker' : request.form['user_id_worker']
+        # 'user_id_worker' : request.form['user_id_worker']
     }
     repair.Repair.save(data)
+    # flash("Success! Your reapir has been created.", "success")
     return redirect('/user_dashboard')
 
 @app.route('/delete_repair/<int:id>')
@@ -57,7 +58,7 @@ def update_the_details():
     data = {
         'repair_id' : request.form['repair_id'],
         'location' : request.form['location'],
-        'description' : request.form['description']
+        'destination' : request.form['destination']
     }
     repair.Repair.update(data)
     flash("Success! Your repair has been changed.", "success")

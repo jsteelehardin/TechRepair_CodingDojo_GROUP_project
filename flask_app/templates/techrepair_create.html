@@ -17,6 +17,7 @@
         <a href="/logout" class="btn btn-light btn-logout">Logout</a>
     </div>
 <!-- <body  style="background-color: slategrey;">
+
     <div class="container row justify-content-center mx-auto mt-2 p-3">
         <div class="row">
             <h1 class="p-0 col-6">New Job</h1>
@@ -52,7 +53,12 @@
                 </div>
                 
             </div>
-                <button type="submit" class="btn btn-info mt-2 border border-1">Create</button>
+        </div>
+        <input type="hidden" name="user_id_posted" value="{{session['user_id']}}">
+        <div class="form_group" id="submit_button">
+            <input type="submit" id="submit_request_ride" value="Post">
+        </div>
+                <!-- <button type="submit" class="btn btn-info mt-2 border border-1">Create</button> -->
             </form>
         </form>
     </div>
