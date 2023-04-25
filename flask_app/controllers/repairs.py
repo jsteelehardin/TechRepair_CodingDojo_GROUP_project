@@ -44,14 +44,14 @@ def show_details(id):
     data = {
         'id' : id
     }
-    return render_template('details.html',repair=repair.Repair.get_one_with_users(data))
+    return render_template('view_job.html',repair=repair.Repair.get_one_with_users(data))
 
-@app.route('/edit_details/<int:id>')
+@app.route('/edit_job/<int:id>')
 def display_edit_page(id):
     data = {
         'id' : id
     }
-    return render_template('edit_details.html', repair = repair.Repair.get_one_by_id(data))
+    return render_template('edit_job.html', repair = repair.Repair.get_one_by_id(data))
 
 @app.route('/submit_update', methods = ['POST'])
 def update_the_details():

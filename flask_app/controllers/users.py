@@ -46,7 +46,7 @@ def show_dashboard():
     data ={
         'id': session['user_id']
     }
-    return render_template("user_dashboard.html",user=user.User.get_one(data))
+    return render_template("dashboard.html",user=user.User.get_one(data))
 
 @app.route('/logout')
 def logout():
