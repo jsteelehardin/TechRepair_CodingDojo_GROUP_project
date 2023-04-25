@@ -83,7 +83,7 @@ class Repair:
                     'created_at': row['created_at'],
                     'updated_at': row['updated_at']
             }
-            this_repair.owner = user.User(user_posted_data)
+            this_repair.posted = user.User(user_posted_data)
             repairs.append(this_repair)
 
             print('appending repairs with this repair:', this_repair)
