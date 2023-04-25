@@ -39,6 +39,7 @@
                     </thead>
                     <tbody>
                         {% for repair in repairs %}
+                            {% if repair.user_id_posted != session['user_id'] %}
                             <tr>
                                 <td>{{repair.name}}</td>
                                 <td>{{repair.posted.first_name}} {{repair.posted.last_name}}</td>
@@ -48,6 +49,7 @@
                                     <a href="/delete_repair/{{repair.id}}" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
+                            {% endif %}
                         {% endfor %}
                     </tbody>
 
