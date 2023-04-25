@@ -1,6 +1,7 @@
 from flask import render_template,redirect,session,request, url_for, flash
 from flask_app import app
 from flask_app.models import repair
+from flask_app.models.user import User
 # test comit
 @app.route('/new_repair')
 def request_repair():
@@ -29,6 +30,17 @@ def destroy(id):
     repair.Repair.delete(data)
     flash("Success! Your reapir has been deleted.", "success")
     return redirect('/user_dashboard')
+
+
+# MY JOBS PAGE ROUTE
+@app.route('/myjobs')
+def my_jobs():
+    if 'user_id' not in session:
+        return redirect('/')
+    user = User.get_one({'id': session['user_id']})
+    if not user:
+        return redirect('/logout')
+    return render_template('my_jobs.html', user = user, repairs = repair.Repair.get_users_jobs({'user_id_worker': session['user_id']}))
 
 @app.route('/become_worker', methods =['POST'])
 def update_driver():

@@ -2,6 +2,7 @@ from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 from flask_app.models import user
 
+db = 'group_project'
 
 class Repair:
     def __init__(self,data):
@@ -57,6 +58,37 @@ class Repair:
             is_valid = False
         return is_valid
 
+
+# for the my_jobs page where it shows only the user in session's jobs that they accepted
+    @classmethod
+    def get_users_jobs(cls, data):
+        print('running get user in sessions jobs')
+
+        query = 'SELECT * FROM repairs JOIN users ON repairs.user_id_posted = users.id WHERE user_id_worker = %(user_id_worker)s;'
+
+        results = connectToMySQL(db).query_db(query, data)
+        print('results', results)
+
+        repairs = []
+
+        for row in results:
+            print('iterating through results now')
+            this_repair = cls(row)
+            user_posted_data = {
+                    'id': row['users.id'],
+                    'first_name': row['first_name'],
+                    'last_name': row['last_name'],
+                    'email': row['email'],
+                    'password': '',
+                    'created_at': row['created_at'],
+                    'updated_at': row['updated_at']
+            }
+            this_repair.owner = user.User(user_posted_data)
+            repairs.append(this_repair)
+
+            print('appending repairs with this repair:', this_repair)
+            print(repairs)
+        return repairs
 
     @classmethod
     def get_all(cls,data):
