@@ -26,7 +26,7 @@ class Repair:
         repair = cls(result)
         repair.posted = user.User(
             {
-                'id' : result['user_id_rider'],
+                'id' : result['user_id_posted'],
                 'first_name' : result['first_name'],
                 'last_name' : result['last_name'],
                 'email' : result['email'],

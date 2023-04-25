@@ -18,34 +18,30 @@
             <a href="/logout" class="btn btn-light btn-logout">Logout</a>
         </div>
     </div>
-    <div class="container row justify-content-center mx-auto mt-2">
-        <div class="row">
-            <h1 class="p-0 col-6 mt-5">View Job</h1>
-        </div>
+    <div>
+        <h1>{{repair.name}}</h1>
+        <h4>{{repair.location}}</h4>
+        <p>{{repair.description}}</p>
+        <p>Posted by: {{repair.posted.first_name}} {{repair.posted.last_name}}</p>
 
-        <div class="row justify-content-between mt-5">
-            <h2 class='fs-1 col-6'>Job:<!--{{here is Job Title jinja }} Maybe Job: Need to be deleted and have only the info from job --></h2>
-            <p class="fs-3 col-6 text-end">Posted by: <!--{{jinja}}--></p>
-        </div>
+        {% if session['user_id'] == repair.user_id_posted %}
+        <a href="/edit_job/{{repair.id}}" class="btn btn-outline-secondary">Edit</a>
+        <a href="/delete_repair/{{repair.id}}" class="btn btn-danger">Delete</a>
+        {% endif %}
 
-        <div class="row border border-dark border-4 rounded rounded-3 p-3 fs-4 shadow">
-            <div class="row mb-3">
-                <p class="col-4">Description:</p>
-                <p class="col-8"><!--{{ here is gonna be jinja }}  also here description needs to be delete and post only info with inja--></p>
-            </div>
-            <div class="row mb-3">
-                <p class="col-4">Location:</p>
-                <p class="col-8"><!--{{here is jinja }}   Same here --></p>
-            </div>
-        </div>
-        <div class="col-12">
-            <button type="submit" class="btn btn-outline-dark mt-2">Add to My Job</button>
-        </div>
+        {% if session['user_id'] != repair.user_id_posted %}
+        <form action="/become_worker" method="post" id="claim_job">
+            <input type="hidden" value="{{session['user_id']}}" name="user_id_worker">
+            <input type="hidden" value="{{repair.id}}" name="repair_id">
+            <input type="submit" value="Claim Job!">
+        </form>
+        {% endif %}
     </div>
-    <footer class="footer">
+    <!-- <footer class="footer">
         <div class="container">
         <span class="text-white">© 2023 Tech Repairs</span>
         </div>
     </footer>
-</body>
+</body> -->
+</html>
 </html>

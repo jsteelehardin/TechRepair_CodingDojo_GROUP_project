@@ -41,13 +41,29 @@
                         {% for repair in repairs %}
                             <tr>
                                 <td>{{repair.name}}</td>
+                                <td>{{repair.posted.first_name}}</td>
                                 <td>{{repair.location}}</td>
-                                <td>{{repair.description}}</td>
                                 <td>
                                     <a href="/detail_page/{{repair.id}}" class="btn btn-info">View</a>
-                                    {% if session['repair.owner.user_id'] == repair.user_id_posted %}
+                                    {% if (session['user_id'] == repair.user_id_posted) %}
                                     <a href="/edit_job/{{repair.id}}" class="btn btn-outline-secondary">Edit</a>
                                     <a href="/delete_repair/{{repair.id}}" class="btn btn-danger">Delete</a>
+                                    {% endif %}
+                                    {% if (session['user_id'] != repair.user_id_posted) and
+                                    (session['user_id'] != repair.user_id_worker) and
+                                    (repair.user_id_posted == repair.user_id_worker) %}
+                                    <form action="/become_worker" method="post" id="claim_job">
+                                        <input type="hidden" value="{{session['user_id']}}" name="user_id_worker">
+                                        <input type="hidden" value="{{repair.id}}" name="repair_id">
+                                        <input type="submit" value="Claim Job!">
+                                    </form>
+                                    {% endif %}
+                                    {% if (session['user_id'] == repair.user_id_worker) and 
+                                    (session['user_id'] != repair.user_id_posted) %}
+                                    <p>You are the worker</p>
+                                    {% endif %}
+                                    {% if repair.user_id_posted != repair.user_id_worker %}
+                                    <p>Job has been claimed</p>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -56,34 +72,11 @@
 
                 </table>
             </div>
-        <div class="row">
-            <h4>My Job</h4>
-            <table class="table table-gray table-striped table-hover table-sm fs-4 table-bordered shadow fs-2 text-center text-dark">
-                <thead>
-                <tr>
-                    <th>Job</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>example, example example,hahahahahahahahahahahahahahahhahaha</td>
-                    
-                    <td>
-                        <a href="/detail_page/{{repair.id}}" class="btn btn-outline-info">View</a>
-                        <a href="/edit_job/{{repair.id}}" class="btn btn-outline-secondary">Edit</a>
-                        <!-- <a href="#" class="btn btn-outline-danger">Done</a> -->
-                        <a href="/delete_repair/{{repair.id}}" class="btn btn-outline-danger">Delete</a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <footer class="footer">
+        <!-- <footer class="footer">
             <div class="container">
             <span class="text-white">© 2023 Tech Repairs</span>
             </div>
-        </footer>
+        </footer> -->
         
 </body>
 </html>

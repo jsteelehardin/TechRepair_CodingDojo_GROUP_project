@@ -102,3 +102,9 @@ body {
     align-items: center;
 }
 /* end login spec */
+
+
+#claim_job input[type="submit"] {
+    width: 50%;
+    margin: 10px;
+}

@@ -83,3 +83,12 @@ def worker_canceled(id):
     }
     repair.Repair.worker_cancel(data)
     return redirect('/user_dashboard')
+
+@app.route('/become_worker', methods =['POST'])
+def update_worker():
+    data = {
+        'repair_id' : request.form['repair_id'],
+        'user_id_worker' : session['user_id']
+    }
+    repair.Repair.become_worker(data)
+    return redirect('/user_dashboard')
