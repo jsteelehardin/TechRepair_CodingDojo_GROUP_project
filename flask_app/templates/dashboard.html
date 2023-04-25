@@ -38,18 +38,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>nanananhhhhhhhhhhhhhhh</td>
-                            <td>nananannnnnn</td>
-                            <td>nnananannnnn</td>
-                            <td>
-                                <a href="/detail_page" class="btn btn-outline-info">View</a>
-                                <a href="/delete_repair" class="btn btn-outline-secondary">Edit</a>
-                                <!-- <a href="#" class="btn btn-outline-danger">Done</a> -->
-                                <button class="btn btn-outline-danger" type="done">Done</button>
-                            </td>
-                        </tr>
+                        {% for repair in repairs %}
+                            <tr>
+                                <td>{{repair.name}}</td>
+                                <td>{{repair.location}}</td>
+                                <td>{{repair.description}}</td>
+                                <td>
+                                    <a href="/detail_page/{{repair.id}}" class="btn btn-info">View</a>
+                                    {% if session['repair.owner.user_id'] == repair.user_id_posted %}
+                                    <a href="/edit_job/{{repair.id}}" class="btn btn-outline-secondary">Edit</a>
+                                    <a href="/delete_repair/{{repair.id}}" class="btn btn-danger">Delete</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
                     </tbody>
+
                 </table>
             </div>
         <div class="row">
@@ -66,10 +70,10 @@
                     <td>example, example example,hahahahahahahahahahahahahahahhahaha</td>
                     
                     <td>
-                        <a href="/detail_page" class="btn btn-outline-info">View</a>
-                        <a href="/delete_repair" class="btn btn-outline-secondary">Edit</a>
+                        <a href="/detail_page/{{repair.id}}" class="btn btn-outline-info">View</a>
+                        <a href="/edit_job/{{repair.id}}" class="btn btn-outline-secondary">Edit</a>
                         <!-- <a href="#" class="btn btn-outline-danger">Done</a> -->
-                        <button class="btn btn-outline-danger" type="done">Done</button>
+                        <a href="/delete_repair/{{repair.id}}" class="btn btn-outline-danger">Delete</a>
                     </td>
                 </tr>
                 </tbody>
