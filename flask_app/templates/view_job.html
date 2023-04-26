@@ -10,22 +10,28 @@
     <title>view Job</title>
 </head>
 <body>
+    <div class="wrapper"> 
     <div class="banner">
-        <h1 class="fw-bold logo text-white p-5" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 3.5rem;" >Tech Repairs</h1>
+        <h1 class="fw-bold p-5" style="font-size: 4.0rem;" >Tech Repairs</h1>
+        <br>
         <div>
-            <a href="/user_dashboard" class="btn btn-light ">Home</a>
-            <a href="/myjobs" class="btn btn-light btn-add-job">My Jobs</a>
-            <a href="/logout" class="btn btn-light btn-logout">Logout</a>
+            <br>
+            <br>
+            <br>
+            <br>
+            <a href="/user_dashboard" class="btn btn-outline-warning ">Dashboard</a>
+            <a href="/myjobs" class="btn btn-outline-warning btn-add-job">My Jobs</a>
+            <a href="/logout" class="btn btn-outline-warning btn-logout">Logout</a>
         </div>
     </div>
-    <div>
+    <div class="detail">
         <h1>{{repair.name}}</h1>
         <h4>{{repair.location}}</h4>
         <p>{{repair.description}}</p>
         <p>Posted by: {{repair.posted.first_name}} {{repair.posted.last_name}}</p>
 
         {% if session['user_id'] == repair.user_id_posted %}
-        <a href="/edit_job/{{repair.id}}" class="btn btn-outline-secondary">Edit</a>
+        <a href="/edit_job/{{repair.id}}" class="btn btn-outline-success">Edit</a>
         <a href="/delete_repair/{{repair.id}}" class="btn btn-danger">Delete</a>
         {% endif %}
 
@@ -33,15 +39,15 @@
         <form action="/become_worker" method="post" id="claim_job">
             <input type="hidden" value="{{session['user_id']}}" name="user_id_worker">
             <input type="hidden" value="{{repair.id}}" name="repair_id">
-            <input type="submit" value="Claim Job!">
+            <input type="submit" value="Claim Job!" class="btn btn-success">
         </form>
         {% endif %}
     </div>
-    <!-- <footer class="footer">
+    <footer class="footer">
         <div class="container">
         <span class="text-white">© 2023 Tech Repairs</span>
         </div>
     </footer>
-</body> -->
+</body> 
 </html>
 </html>

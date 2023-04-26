@@ -12,26 +12,33 @@
     <title>Dashboard</title>
 </head>
     <body>
+        <div class="wrapper"> 
         <div class="banner">
-            <h1 class="fw-bold logo text-white p-5" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 3.5rem;" >Tech Repairs</h1>
+            <h1 class="fw-bold p-5" style="font-size: 4.0rem;" >Tech Repairs</h1>
             <div>
-                <a href="/new_repair" class="btn btn-light btn-add-job">Add A Job</a>
-                <a href="/myjobs" class="btn btn-light btn-add-job">My Jobs</a>
-                <a href="/logout" class="btn btn-light btn-logout">Logout</a>
+                <br>
+                <br>
+                <br>
+                <br>
+                <a href="/new_repair" class="btn btn-outline-warning btn-add-job">Add A Job</a>
+                <a href="/myjobs" class="btn btn-outline-warning btn-add-job">My Jobs</a>
+                <a href="/logout" class="btn btn-outline-warning btn-logout">Logout</a>
             </div>
         </div>
     
         <div class="container row justify-content-center mx-auto mt-2">
             <div class="row">
-                <h1 class="p-0 col-6">Welcome {{user.first_name}} !!</h1> <!--(Here The name / Jason !/)-->
+                <h1 class="p-0 text-dark col-6" >Welcome {{user.first_name}} !!</h1> 
             </div>
         
             <div class="row">
-                <h4>All Jobs</h4>
-                <table class="table table-gray table-striped table-hover table-bordered shadow table-sm fs-4 text-center text-dark">
+                <br>
+                <br>
+                <h3 class="text-whtie">All Jobs</h3>
+                <table class="table table-secondary table-striped table-hover table-bordered shadow table-sm fs-4 text-center text-dark">
                     <thead>
                         <tr>
-                            <th>Job</th>
+                            <th>Job Title</th>
                             <th>Posted by</th>
                             <th>Location</th>
                             <th>Actions</th>
@@ -46,7 +53,7 @@
                                 <td>
                                     <a href="/detail_page/{{repair.id}}" class="btn btn-info">View</a>
                                     {% if (session['user_id'] == repair.user_id_posted) %}
-                                    <a href="/edit_job/{{repair.id}}" class="btn btn-outline-secondary">Edit</a>
+                                    <a href="/edit_job/{{repair.id}}" class="btn btn-outline-success">Edit</a>
                                     <a href="/delete_repair/{{repair.id}}" class="btn btn-danger">Delete</a>
                                     {% endif %}
                                     {% if (session['user_id'] != repair.user_id_posted) and
@@ -55,7 +62,7 @@
                                     <form action="/become_worker" method="post" id="claim_job">
                                         <input type="hidden" value="{{session['user_id']}}" name="user_id_worker">
                                         <input type="hidden" value="{{repair.id}}" name="repair_id">
-                                        <input type="submit" value="Claim Job!">
+                                        <input type="submit" value="Claim Job!" class="btn btn-success">
                                     </form>
                                     {% endif %}
                                     {% if (session['user_id'] == repair.user_id_worker) and 
@@ -72,11 +79,11 @@
 
                 </table>
             </div>
-        <!-- <footer class="footer">
+        <footer class="footer">
             <div class="container">
             <span class="text-white">© 2023 Tech Repairs</span>
             </div>
-        </footer> -->
+        </footer> 
         
 </body>
 </html>

@@ -9,45 +9,49 @@
     <title>Adding Repairs</title>
 </head>
 <body>
-<div class="banner">
-    <h1 class="fw-bold logo text-white p-5" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 3.5rem;" >Tech Repairs</h1>
-    <div>
-        <a href="/user_dashboard" class="btn btn-light ">Home</a>
-        <a href="/myjobs" class="btn btn-light btn-add-job">My Jobs</a>
-        <a href="/logout" class="btn btn-light btn-logout">Logout</a>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="container-user">
+        <div class=flashes>
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+        </div>
     </div>
-<!-- <body  style="background-color: slategrey;">
-
-    <div class="container row justify-content-center mx-auto mt-2 p-3">
-        <div class="row">
-            <h1 class="p-0 col-6">New Job</h1>
-            <a href="/dashboard" class="btn btn-light ">Home</a>
-            <a href="/myjobs" class="btn btn-light btn-add-job">My Jobs</a>
-            <a href="/logout" class="btn btn-light btn-logout">Logout</a>
-        </div> -->
-            {% with messages = get_flashed_messages() %}
+    {% endif %}
+{% endwith %}
+<div class="banner">
+    <h1 class="fw-bold p-5" style="font-size: 4.0rem;" >Tech Repairs</h1>
+    <div>
+        <a href="/user_dashboard" class="btn btn-outline-warning ">Dashboard</a>
+        <a href="/myjobs" class="btn btn-outline-warning btn-add-job">My Jobs</a>
+        <a href="/logout" class="btn btn-outline-warning btn-logout">Logout</a>
+    </div>
+            <!-- {% with messages = get_flashed_messages() %}
                 {% if messages %}
                     {% for message in messages %}
                         <p class="alert alert-danger card invalid-feedback mx-0 mb-0 p-1 text-center">{{message}}</p>
                     {% endfor %}
                 {% endif %}
-            {% endwith %}
+            {% endwith %} -->
         </div>
         <form action="/repair_submission" method="post" class="card col-12 mx-auto p-3" style="background-color: lightgray;">
             <div class="row">
                 <div class="col-4 offset-1">
                     <div class="form-group mb-3">
-                        <label for="name" class="form-label">Name:</label>
+                        <label style=font-size:30px for="name" class="form-label">Job Title:</label>
                         <input type="text" name="name" id="name" class="form-control">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="location" class="form-label">Location:</label>
+                        <label style=font-size:30px for="location" class="form-label">Location:</label>
                         <textarea name="location" id="location" class="form-control"></textarea>
                     </div>
                 </div>
                 <div class="offset-2 col-4 row">
                     <div class="form-group mb-3">
-                        <label for="description" class="form-label">Description:</label>
+                        <label style=font-size:30px for="description" class="form-label">Description:</label>
                         <input type="description" name="description" id="description" class="form-control">
                     </div>
                 </div>
@@ -56,7 +60,7 @@
         </div>
         <input type="hidden" name="user_id_posted" value="{{session['user_id']}}">
         <div class="form_group" id="submit_button">
-            <input type="submit" id="submit_request_ride" value="Post">
+            <input type="submit" id="submit_request_repair" value="Post" class="btn btn-success">
         </div>
                 <!-- <button type="submit" class="btn btn-info mt-2 border border-1">Create</button> -->
             </form>

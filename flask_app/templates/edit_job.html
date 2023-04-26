@@ -10,53 +10,58 @@
     <title>Edit Job Posting</title>
 </head>
 <body>
+    <div class="wrapper"> 
     <div class="banner">
-        <h1 class="fw-bold logo text-white p-5" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 3.5rem;" >Tech Repairs</h1>
+        <h1 class="fw-bold p-5" style="font-size: 4.0rem;" >Tech Repairs</h1>
         <div class="p-5">
-            <a href="/user_dashboard" class="btn btn-light ">Home</a>
-            <a href="/myjobs" class="btn btn-light btn-add-job">My Jobs</a>
-            <a href="/logout" class="btn btn-light btn-logout">Logout</a>
+            <a href="/user_dashboard" class="btn btn-outline-warning ">Dashboard</a>
+            <a href="/myjobs" class="btn btn-outline-warning btn-add-job">My Jobs</a>
+            <a href="/logout" class="btn btn-outline-warning btn-logout">Logout</a>
         </div>
     </div>
         <div class="container row justify-content-center mx-auto mt-2">
             <div class="row">
-                <h1 class="p-0 col-6 mt-4">Edit Job Posting <!--{{ here is jinja }} --> </h1> 
+                <h1 class="p-0 col-6 mt-4">Edit Job Posting</h1> 
                 
             </div>
-            <div><!-- Here Is for validation 
+            <div>
                 {% with messages = get_flashed_messages(category_filter=['repair_form']) %}
                     {% if messages %}
                         {% for message in messages %}
                         <p class="alert alert-danger card invalid-feedback mx-0 mb-0 p-1 text-center">{{message}}</p>
                         {% endfor %}
                     {% endif %}
-                {% endwith %}-->
+                {% endwith %}
             </div>
             <form action="/submit_update" method="post" class="card col-12 mx-auto   text-dark p-3 "style="background-color: #f8f9fa;">
-                <div class="row">
+                <div class="main">
                 <div class="col-md-6">
                     <div class="form-group mb-3">
-                        <input type="hidden" name="id" value="{{ one_repair.id }}">
-                    <label for="job_title" class="form-label">Job Title:</label>
-                    <input type="text" name="job_title" value="{{ one_repair.name }}" >
-                    <!-- <input type="text" name="job_title" id="job_title" class="form-control"> -->
+                        <input type="hidden" name="id" value="{{ repair.id }}">
+                    <label style=font-size:30px for="job_title" class="form-label">Job Title:</label>
+                    <br>
+                    <input type="text" name="job_title" value="{{ repair.name }}" >
                     </div>
                     <div class="form-group mb-3">
-                    <label for="description" class="form-label">Description:</label>
-                    <textarea name="description" cols="30" rows="10">{{one_repair.description}} </textarea>
-                    <!-- <textarea name="description" id="description" class="form-control" rows="4"></textarea> -->
+                    <label style=font-size:30px for="description" class="form-label">Description:</label>
+                    <br>
+                    <textarea name="description" cols="30" rows="10">{{ repair.description }} </textarea>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group mb-3">
-                    <label for="location" class="form-label">Location:</label>
-                    <input type="text" name="location" value="{{repair.location}}" class="form-control"></input>
+                    <label style=font-size:30px for="location" class="form-label">Location:</label>
+                    <br>
+                    <input type="text" name="location" value="{{ repair.location }}" class="form-control"></input>
                     </div>
                 </div>
                 </div>
-                <div class="row">
+                
                 <div class="col-10 offset-1">
-                    <button type="submit" class="btn btn-outline-dark mt-2 border border-1 w-100">Submit</button>
+                </div>
+                <input type="hidden" value="{{repair.id}}" name="repair_id">
+                <input type="submit" value="Update" id="submit_button" class="btn btn-success">
+                </div>
                 </div>
                 </div>
             </form>

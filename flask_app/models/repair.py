@@ -48,13 +48,13 @@ class Repair:
     def validate(one_repair):
         is_valid = True
         if len(one_repair['name']) < 3:
-            flash('Name must be three or more characters', 'repair_form')
+            flash('Name must be three or more characters', 'danger')
             is_valid = False
         if len(one_repair['location']) < 3:
-            flash('Location must be three or more characters', 'repair_form')
+            flash('Location must be three or more characters', 'danger')
             is_valid = False
         if len(one_repair['description']) < 5:
-            flash('Job description must be 5 or more characters', 'repair_form')
+            flash('Job description must be 5 or more characters', 'danger')
             is_valid = False
         return is_valid
 
@@ -120,7 +120,7 @@ class Repair:
 
     @classmethod
     def delete(cls,data):
-        query = 'DELETE from repairs where repairs.id = %(id)s;'
+        query = 'DELETE from repairs Where repairs.id = %(id)s;'
         return connectToMySQL('group_project').query_db(query,data)
 
     @classmethod
@@ -135,7 +135,7 @@ class Repair:
 
     @classmethod 
     def get_one_by_id(cls,data):
-        query = 'SELECT * FROM repairs where id = %(id)s;'
+        query = 'SELECT * FROM repairs Where id = %(id)s;'
         result = connectToMySQL('group_project').query_db(query,data)
         result = result[0]
         return cls(result)
