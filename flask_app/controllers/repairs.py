@@ -67,11 +67,13 @@ def display_edit_page(id):
 def update_the_details():
     data = {
         'repair_id' : request.form['repair_id'],
+        'name' : request.form['name'],
         'location' : request.form['location'],
         'description' : request.form['description']
     }
     repair.Repair.update(data)
-    return redirect(f'/user_dashboard/{data["repair_id"]}')
+    return redirect('/user_dashboard')
+    # return redirect(f'/user_dashboard/{data["repair_id"]}')
 
 @app.route('/cancel_repair/<int:id>')
 def worker_canceled(id):

@@ -52,6 +52,7 @@ input[type=submit] {
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
+    padding-bottom: 80px;
 }
 
 .title {
@@ -127,5 +128,10 @@ h1 {
     opacity: .93;
     align-items: center;
     padding: 30px;
+}
+
+.detail {
+    padding-left: 70px;
+    padding-top: 30px;
 }
 

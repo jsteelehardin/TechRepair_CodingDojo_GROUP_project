@@ -25,9 +25,14 @@
         </div>
     </div>
     <div class="detail">
-        <h1>{{repair.name}}</h1>
-        <h4>{{repair.location}}</h4>
-        <p>{{repair.description}}</p>
+        <h1>Job Title:  {{repair.name}}</h1>
+        <br>
+        <h4>Location:  {{repair.location}}</h4>
+        <br>
+        <br>
+        <p>Description:  {{repair.description}}</p>
+        <br>
+        <br>
         <p>Posted by: {{repair.posted.first_name}} {{repair.posted.last_name}}</p>
 
         {% if session['user_id'] == repair.user_id_posted %}
@@ -43,11 +48,11 @@
         </form>
         {% endif %}
     </div>
-    <footer class="footer">
+    <!-- <footer class="footer">
         <div class="container">
         <span class="text-white">© 2023 Tech Repairs</span>
         </div>
-    </footer>
+    </footer> -->
 </body> 
 </html>
 </html>
