@@ -12,7 +12,7 @@
 <body>
     <div class="wrapper"> 
     <div class="banner">
-        <h1 class="fw-bold p-5" style="font-size: 4.0rem;" >Tech Repairs</h1>
+        <h1 class="fw-bold p-5" style="font-size: 3.5rem;" >Tech Repairs</h1>
         <div class="p-5">
             <a href="/user_dashboard" class="btn btn-outline-warning ">Dashboard</a>
             <a href="/myjobs" class="btn btn-outline-warning btn-add-job">My Jobs</a>
@@ -24,15 +24,6 @@
                 <h1 class="p-0 col-6 mt-4">Edit Job Posting</h1> 
                 
             </div>
-            <div>
-                {% with messages = get_flashed_messages(category_filter=['repair_form']) %}
-                    {% if messages %}
-                        {% for message in messages %}
-                        <p class="alert alert-danger card invalid-feedback mx-0 mb-0 p-1 text-center">{{message}}</p>
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
-            </div>
             <form action="/submit_update" method="post" class="card col-12 mx-auto   text-dark p-3 "style="background-color: #f8f9fa;">
                 <div class="main">
                 <div class="col-md-6">
@@ -40,7 +31,7 @@
                         <input type="hidden" name="id" value="{{ repair.id }}">
                     <label style=font-size:30px for="job_title" class="form-label">Job Title:</label>
                     <br>
-                    <input type="text" name="job_title" value="{{ repair.name }}" >
+                    <input type="text" name="name" value="{{ repair.name }}" >
                     </div>
                     <div class="form-group mb-3">
                     <label style=font-size:30px for="description" class="form-label">Description:</label>
