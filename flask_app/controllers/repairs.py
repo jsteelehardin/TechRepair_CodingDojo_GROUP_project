@@ -40,6 +40,15 @@ def my_jobs():
         return redirect('/logout')
     return render_template('my_jobs.html', user = user, repairs = repair.Repair.get_users_jobs({'user_id_worker': session['user_id']}))
 
+# removes job from user in session's job to do list
+@app.route('/drop_job/<int:id>')
+def drop_job(id):
+    data = {
+        'repair_id': id
+    }
+    repair.Repair.drop_job(data)
+    return redirect('/myjobs')
+
 @app.route('/become_worker', methods =['POST'])
 def update_driver():
     data = {

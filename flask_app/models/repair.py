@@ -59,6 +59,12 @@ class Repair:
         return is_valid
 
 
+# removes job from user in sessions job list
+    @classmethod
+    def drop_job(cls, data):
+        query = 'UPDATE repairs SET user_id_worker = user_id_posted, updated_at = NOW() WHERE repairs.id = %(repair_id)s;'
+        result = connectToMySQL(db).query_db(query, data)
+
 # for the my_jobs page where it shows only the user in session's jobs that they accepted
     @classmethod
     def get_users_jobs(cls, data):
