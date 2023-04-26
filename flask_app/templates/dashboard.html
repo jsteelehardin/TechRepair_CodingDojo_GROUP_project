@@ -54,7 +54,7 @@
                                     <a href="/detail_page/{{repair.id}}" class="btn btn-info">View</a>
                                     {% if (session['user_id'] == repair.user_id_posted) %}
                                     <a href="/edit_job/{{repair.id}}" class="btn btn-outline-success">Edit</a>
-                                    <a href="/delete_repair/{{repair.id}}" class="btn btn-danger">Delete</a>
+                                    <a href="/delete_repair/{{repair.id}}" class="btn btn-danger">Cancel</a>
                                     {% endif %}
                                     {% if (session['user_id'] != repair.user_id_posted) and
                                     (session['user_id'] != repair.user_id_worker) and
