@@ -22,6 +22,7 @@
     </div>
     {% endif %}
 {% endwith %}
+<div class="wrapper"> 
 <div class="banner">
     <h1 class="fw-bold p-5" style="font-size: 4.0rem;" >Tech Repairs</h1>
     <div>
@@ -37,7 +38,8 @@
                 {% endif %}
             {% endwith %} -->
         </div>
-        <form action="/repair_submission" method="post" class="card col-9 mx-auto p-3" style="background-color: lightgray;">
+        <h1 class="p-0 col-6 text-dark mt-4">Add a New Job Posting</h1>
+        <form action="/repair_submission" method="post" class="card col-12 mx-auto p-3" style="background-color: lightgray;">
             <div class="row">
                 <div class="col-4 offset-1">
                     <div class="form-group mb-3">
@@ -54,9 +56,6 @@
                         <label style=font-size:20px for="description" class="form-label">Description:</label>
                         <input type="description" name="description" id="description" class="form-control">
                     </div>
-                </div>
-                
-            </div>
         </div>
         <input type="hidden" name="user_id_posted" value="{{session['user_id']}}">
         <div class="form_group" id="submit_button">
@@ -65,6 +64,8 @@
                 <!-- <button type="submit" class="btn btn-info mt-2 border border-1">Create</button> -->
             </form>
         </form>
+    </div>
+    </div>
     </div>
 </body>
 </html>

@@ -127,11 +127,15 @@ h1 {
     background-color: white;
     opacity: .93;
     align-items: center;
-    padding: 30px;
+    padding: 20px;
 }
 
 .detail {
     padding-left: 70px;
     padding-top: 30px;
+}
+
+.row {
+    padding-top: 20px;
 }
 
