@@ -48,13 +48,13 @@ class Repair:
     def validate(one_repair):
         is_valid = True
         if len(one_repair['name']) < 3:
-            flash('Name must be three or more characters', 'danger')
+            flash('Job Title must be three or more characters', 'danger')
             is_valid = False
         if len(one_repair['location']) < 3:
             flash('Location must be three or more characters', 'danger')
             is_valid = False
         if len(one_repair['description']) < 5:
-            flash('Job description must be 5 or more characters', 'danger')
+            flash('Job Description must be 5 or more characters', 'danger')
             is_valid = False
         return is_valid
 
